@@ -1,0 +1,29 @@
+----------------------------------------------------------------
+
+Please see below for the top 3 articles -by number of views- and the number of views each article had.
+
+Article: Bears love berries, alleges bear    Number of Views: 253801
+
+Article: Bad things gone, say good people    Number of Views: 170098
+
+Article: Goats eat Google's lawn    Number of Views: 84906
+
+
+----------------------------------------------------------------
+
+Please see below for the top authors -by number of views- and the number of views each author had.
+
+Author: Ursula La Multa    Number of Views: 507594
+
+Author: Rudolf von Treppenwitz    Number of Views: 423457
+
+Author: Anonymous Contributor    Number of Views: 170098
+
+Author: Markoff Chaney    Number of Views: 84557
+
+
+----------------------------------------------------------------
+
+Please see below for all dates when errors were greater than 1 percent of all responses.
+
+On 2016-07-17, The percentage of total status responses that were error messages was 2.3%.
