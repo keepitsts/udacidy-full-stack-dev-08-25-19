@@ -148,16 +148,6 @@ requires the VIEWS data from the LOG table as well as the SLUG and TITLE data fr
 
 create view tops as select replace(path, '/article/', '') as slugpath, count(*) as views from log group by slugpath order by views;
 
-example:
-          slugpath          | views
-----------------------------+--------
- media-obsessed-with-bearsw |     23
- balloon-goons-doomedx      |     23
- so-many-bearse             |     24
- goats-eat-googlesn         |     25
- trouble-for-troubledq      |     25
- balloon-goons-doomedf      |     25
- balloon-goons-doomedg      |     26
 
 
 
@@ -202,7 +192,7 @@ The third question
 
  – “On which days did more than 1% of requests lead to errors? The log table includes a column status that indicates the HTTP status code that the news site sent to the user's browser.” –
 
-requires the TIME and STATUS data from the LOG table. 3 views were created in order to isolate the data needed. 
+requires the TIME and STATUS data from the LOG table. 4 views were created in order to isolate the data needed. 
 
 This first view ALLSTATUS counts all responses by status type and date
 create view allstatus as select date(time) as date, count(status) as total from log group by date order by date;
@@ -235,7 +225,22 @@ create view errors as select date(time) as date, count(status) as err_responses 
  2016-07-05 |           423
  2016-07-06 |           420
 
-The third view FINALP provides error responses, all responses and the percentage that the error responses represent.
+
+The third view PERCENT combines DATE, ERR_RESPONSES, and RESPONES to view all in rows by date.
+ create view percent as select errors.date, errors.err_responses, allstatus.responses from errors join allstatus on allstatus.date = errors.date order by errors.date;
+
+     date    | err_responses | responses
+------------+---------------+-----------
+ 2016-07-01 |           274 |     38705
+ 2016-07-02 |           389 |     55200
+ 2016-07-03 |           401 |     54866
+ 2016-07-04 |           380 |     54903
+ 2016-07-05 |           423 |     54585
+ 2016-07-06 |           420 |     54774
+ 2016-07-07 |           360 |     54740
+
+
+The fourth view FINALP provides error responses, all responses and the percentage that the error responses represent.
 create view finalp as select date, err_responses, responses, round(err_responses * 100.0 / responses, 1) as percent from percent;
 
     date    | err_responses | responses | percent

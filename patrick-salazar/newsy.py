@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 
 import psycopg2
 
@@ -44,6 +45,7 @@ def get_questionThree():
     c = db.cursor()
     # create view allstatus as select date(time) as date, count(status) as total from log group by date order by date;
     # create view errors as select date(time) as date, count(status) as err_responses from log where status != '200 OK' group by date order by date;
+    # create view percent as select errors.date, errors.err_responses, allstatus.responses from errors join allstatus on allstatus.date = errors.date order by errors.date;
     # create view finalp as select date, err_responses, responses, round(err_responses * 100.0 / responses, 1) as percent from percent;
     c.execute("select date, percent from finalp where percent > 1.0;")
     answer = c.fetchall()
