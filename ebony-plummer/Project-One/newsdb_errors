@@ -1,0 +1,388 @@
+
+
+
+
+
+
+vagrant@vagrant:/vagrant/project-one-logs-analysis$ clear
+
+vagrant@vagrant:/vagrant/project-one-logs-analysis$ sudo apt-get install postgresql
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+postgresql is already the newest version (9.5+173ubuntu0.2).
+0 upgraded, 0 newly installed, 0 to remove and 3 not upgraded.
+vagrant@vagrant:/vagrant/project-one-logs-analysis$ sudo apt-get install python-psycopg2
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following additional packages will be installed:
+  python-egenix-mxdatetime python-egenix-mxtools
+Suggested packages:
+  python-egenix-mxdatetime-dbg python-egenix-mxdatetime-doc
+  python-egenix-mxtools-dbg python-egenix-mxtools-doc python-psycopg2-doc
+The following NEW packages will be installed:
+  python-egenix-mxdatetime python-egenix-mxtools python-psycopg2
+0 upgraded, 3 newly installed, 0 to remove and 3 not upgraded.
+Need to get 275 kB of archives.
+After this operation, 1,380 kB of additional disk space will be used.
+Do you want to continue? [Y/n] Y
+Get:1 http://us.archive.ubuntu.com/ubuntu xenial/main amd64 python-egenix-mxtools amd64 3.2.9-1 [75.3 kB]
+Get:2 http://us.archive.ubuntu.com/ubuntu xenial/main amd64 python-egenix-mxdatetime amd64 3.2.9-1 [68.3 kB]
+Get:3 http://us.archive.ubuntu.com/ubuntu xenial/main amd64 python-psycopg2 amd64 2.6.1-1build2 [131 kB]
+Fetched 275 kB in 1s (172 kB/s)      
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend requires a screen at least 13 lines tall and 31 columns wide.)
+debconf: falling back to frontend: Readline
+Selecting previously unselected package python-egenix-mxtools.
+(Reading database ... 40866 files and directories currently installed.)
+Preparing to unpack .../python-egenix-mxtools_3.2.9-1_amd64.deb ...
+Unpacking python-egenix-mxtools (3.2.9-1) ...
+Selecting previously unselected package python-egenix-mxdatetime.
+Preparing to unpack .../python-egenix-mxdatetime_3.2.9-1_amd64.deb ...
+Unpacking python-egenix-mxdatetime (3.2.9-1) ...
+Selecting previously unselected package python-psycopg2.
+Preparing to unpack .../python-psycopg2_2.6.1-1build2_amd64.deb ...
+Unpacking python-psycopg2 (2.6.1-1build2) ...
+Setting up python-egenix-mxtools (3.2.9-1) ...
+Setting up python-egenix-mxdatetime (3.2.9-1) ...
+Setting up python-psycopg2 (2.6.1-1build2) ...
+vagrant@vagrant:/vagrant/project-one-logs-analysis$ sudo apt-get install libpq-dev
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following additional packages will be installed:
+  comerr-dev krb5-multidev libgssrpc4 libkadm5clnt-mit9 libkadm5srv-mit9
+  libkdb5-8
+Suggested packages:
+  doc-base krb5-doc krb5-user postgresql-doc-9.5
+The following NEW packages will be installed:
+  comerr-dev krb5-multidev libgssrpc4 libkadm5clnt-mit9 libkadm5srv-mit9
+  libkdb5-8 libpq-dev
+0 upgraded, 7 newly installed, 0 to remove and 3 not upgraded.
+Need to get 486 kB of archives.
+After this operation, 2,528 kB of additional disk space will be used.
+Do you want to continue? [Y/n] Y
+Get:1 http://us.archive.ubuntu.com/ubuntu xenial-updates/main amd64 libgssrpc4 amd64 1.13.2+dfsg-5ubuntu2.1 [54.5 kB]
+Get:2 http://us.archive.ubuntu.com/ubuntu xenial-updates/main amd64 libkdb5-8 amd64 1.13.2+dfsg-5ubuntu2.1 [37.0 kB]
+Get:3 http://us.archive.ubuntu.com/ubuntu xenial-updates/main amd64 libkadm5srv-mit9 amd64 1.13.2+dfsg-5ubuntu2.1 [51.3 kB]
+Get:4 http://us.archive.ubuntu.com/ubuntu xenial-updates/main amd64 libkadm5clnt-mit9 amd64 1.13.2+dfsg-5ubuntu2.1 [36.6 kB]
+Get:5 http://us.archive.ubuntu.com/ubuntu xenial/main amd64 comerr-dev amd64 2.1-1.42.13-1ubuntu1 [38.2 kB]
+Get:6 http://us.archive.ubuntu.com/ubuntu xenial-updates/main amd64 krb5-multidev amd64 1.13.2+dfsg-5ubuntu2.1 [113 kB]
+Get:7 http://us.archive.ubuntu.com/ubuntu xenial-updates/main amd64 libpq-dev amd64 9.5.17-0ubuntu0.16.04.1 [154 kB]
+Fetched 486 kB in 1s (315 kB/s)
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend requires a screen at least 13 lines tall and 31 columns wide.)
+debconf: falling back to frontend: Readline
+Selecting previously unselected package libgssrpc4:amd64.
+(Reading database ... 40979 files and directories currently installed.)
+Preparing to unpack .../libgssrpc4_1.13.2+dfsg-5ubuntu2.1_amd64.deb ...
+Unpacking libgssrpc4:amd64 (1.13.2+dfsg-5ubuntu2.1) ...
+Selecting previously unselected package libkdb5-8:amd64.
+Preparing to unpack .../libkdb5-8_1.13.2+dfsg-5ubuntu2.1_amd64.deb ...
+Unpacking libkdb5-8:amd64 (1.13.2+dfsg-5ubuntu2.1) ...
+Selecting previously unselected package libkadm5srv-mit9:amd64.
+Preparing to unpack .../libkadm5srv-mit9_1.13.2+dfsg-5ubuntu2.1_amd64.deb ...
+Unpacking libkadm5srv-mit9:amd64 (1.13.2+dfsg-5ubuntu2.1) ...
+Selecting previously unselected package libkadm5clnt-mit9:amd64.
+Preparing to unpack .../libkadm5clnt-mit9_1.13.2+dfsg-5ubuntu2.1_amd64.deb ...
+Unpacking libkadm5clnt-mit9:amd64 (1.13.2+dfsg-5ubuntu2.1) ...
+Selecting previously unselected package comerr-dev.
+Preparing to unpack .../comerr-dev_2.1-1.42.13-1ubuntu1_amd64.deb ...
+Unpacking comerr-dev (2.1-1.42.13-1ubuntu1) ...
+Selecting previously unselected package krb5-multidev.
+Preparing to unpack .../krb5-multidev_1.13.2+dfsg-5ubuntu2.1_amd64.deb ...
+Unpacking krb5-multidev (1.13.2+dfsg-5ubuntu2.1) ...
+Selecting previously unselected package libpq-dev.
+Preparing to unpack .../libpq-dev_9.5.17-0ubuntu0.16.04.1_amd64.deb ...
+Unpacking libpq-dev (9.5.17-0ubuntu0.16.04.1) ...
+Processing triggers for libc-bin (2.23-0ubuntu11) ...
+Processing triggers for man-db (2.7.5-1) ...
+Processing triggers for install-info (6.1.0.dfsg.1-5) ...
+Setting up libgssrpc4:amd64 (1.13.2+dfsg-5ubuntu2.1) ...
+Setting up libkdb5-8:amd64 (1.13.2+dfsg-5ubuntu2.1) ...
+Setting up libkadm5srv-mit9:amd64 (1.13.2+dfsg-5ubuntu2.1) ...
+Setting up libkadm5clnt-mit9:amd64 (1.13.2+dfsg-5ubuntu2.1) ...
+Setting up comerr-dev (2.1-1.42.13-1ubuntu1) ...
+Setting up krb5-multidev (1.13.2+dfsg-5ubuntu2.1) ...
+Setting up libpq-dev (9.5.17-0ubuntu0.16.04.1) ...
+Processing triggers for libc-bin (2.23-0ubuntu11) ...
+vagrant@vagrant:/vagrant/project-one-logs-analysis$ pip install psycopg2
+DEPRECATION: Python 2.7 will reach the end of its life on January 1st, 2020. Please upgrade your Python as Python 2.7 won't be maintained after that date. A future version of pip will drop support for Python 2.7.
+Requirement already satisfied: psycopg2 in /usr/lib/python2.7/dist-packages (2.6.1)
+vagrant@vagrant:/vagrant/project-one-logs-analysis$ ls
+newsdata.sql  newsdb_copy.py
+vagrant@vagrant:/vagrant/project-one-logs-analysis$ python newsdb_copy.py 
+vagrant@vagrant:/vagrant/project-one-logs-analysis$ python3 newsdb_copy.py 
+Traceback (most recent call last):
+  File "newsdb_copy.py", line 3, in <module>
+    import psycopg2
+ImportError: No module named 'psycopg2'
+vagrant@vagrant:/vagrant/project-one-logs-analysis$ psql
+psql (9.5.17)
+Type "help" for help.
+
+vagrant=> python newsdv_copy.py
+vagrant-> \q
+vagrant@vagrant:/vagrant/project-one-logs-analysis$ ls
+newsdata.sql  newsdb_copy.py
+vagrant@vagrant:/vagrant/project-one-logs-analysis$ python newsdb_copy.py 
+vagrant@vagrant:/vagrant/project-one-logs-analysis$ python newsdb_copy.py 
+vagrant@vagrant:/vagrant/project-one-logs-analysis$ python newsdb_copy.py 
+vagrant@vagrant:/vagrant/project-one-logs-analysis$ python newsdb_copy.py 
+vagrant@vagrant:/vagrant/project-one-logs-analysis$ python newsdb_copy.py 
+vagrant@vagrant:/vagrant/project-one-logs-analysis$ python3 newsdb_copy.py 
+Traceback (most recent call last):
+  File "newsdb_copy.py", line 3, in <module>
+    import psycopg2
+ImportError: No module named 'psycopg2'
+vagrant@vagrant:/vagrant/project-one-logs-analysis$ logout
+Connection to 127.0.0.1 closed.
+Owners-MacBook-Pro:vagrant Ebony$ pip install psycopg2-binary
+Requirement already satisfied: psycopg2-binary in /Applications/anaconda/lib/python3.6/site-packages (2.8.3)
+Owners-MacBook-Pro:vagrant Ebony$ pip install psycopg2
+Collecting psycopg2
+  Using cached https://files.pythonhosted.org/packages/5c/1c/6997288da181277a0c29bc39a5f9143ff20b8c99f2a7d059cfb55163e165/psycopg2-2.8.3.tar.gz
+    ERROR: Complete output from command python setup.py egg_info:
+    ERROR: running egg_info
+    creating pip-egg-info/psycopg2.egg-info
+    writing pip-egg-info/psycopg2.egg-info/PKG-INFO
+    writing dependency_links to pip-egg-info/psycopg2.egg-info/dependency_links.txt
+    writing top-level names to pip-egg-info/psycopg2.egg-info/top_level.txt
+    writing manifest file 'pip-egg-info/psycopg2.egg-info/SOURCES.txt'
+    
+    Error: pg_config executable not found.
+    
+    pg_config is required to build psycopg2 from source.  Please add the directory
+    containing pg_config to the $PATH or specify the full executable path with the
+    option:
+    
+        python setup.py build_ext --pg-config /path/to/pg_config build ...
+    
+    or with the pg_config option in 'setup.cfg'.
+    
+    If you prefer to avoid building psycopg2 from source, please install the PyPI
+    'psycopg2-binary' package instead.
+    
+    For further information please check the 'doc/src/install.rst' file (also at
+    <http://initd.org/psycopg/docs/install.html>).
+    
+    ----------------------------------------
+ERROR: Command "python setup.py egg_info" failed with error code 1 in /private/var/folders/kw/mtbfdbw95x9_6n43g02b57gc0000gn/T/pip-install-sghrljn1/psycopg2/
+Owners-MacBook-Pro:vagrant Ebony$ python --version
+Python 3.6.4 :: Anaconda custom (64-bit)
+Owners-MacBook-Pro:vagrant Ebony$ python setup.py build
+python: can't open file 'setup.py': [Errno 2] No such file or directory
+Owners-MacBook-Pro:vagrant Ebony$ cd
+Owners-MacBook-Pro:~ Ebony$ pip install psycopg2
+Collecting psycopg2
+  Using cached https://files.pythonhosted.org/packages/5c/1c/6997288da181277a0c29bc39a5f9143ff20b8c99f2a7d059cfb55163e165/psycopg2-2.8.3.tar.gz
+    ERROR: Complete output from command python setup.py egg_info:
+    ERROR: running egg_info
+    creating pip-egg-info/psycopg2.egg-info
+    writing pip-egg-info/psycopg2.egg-info/PKG-INFO
+    writing dependency_links to pip-egg-info/psycopg2.egg-info/dependency_links.txt
+    writing top-level names to pip-egg-info/psycopg2.egg-info/top_level.txt
+    writing manifest file 'pip-egg-info/psycopg2.egg-info/SOURCES.txt'
+    
+    Error: pg_config executable not found.
+    
+    pg_config is required to build psycopg2 from source.  Please add the directory
+    containing pg_config to the $PATH or specify the full executable path with the
+    option:
+    
+        python setup.py build_ext --pg-config /path/to/pg_config build ...
+    
+    or with the pg_config option in 'setup.cfg'.
+    
+    If you prefer to avoid building psycopg2 from source, please install the PyPI
+    'psycopg2-binary' package instead.
+    
+    For further information please check the 'doc/src/install.rst' file (also at
+    <http://initd.org/psycopg/docs/install.html>).
+    
+    ----------------------------------------
+ERROR: Command "python setup.py egg_info" failed with error code 1 in /private/var/folders/kw/mtbfdbw95x9_6n43g02b57gc0000gn/T/pip-install-a6psm4u6/psycopg2/
+Owners-MacBook-Pro:~ Ebony$ python -m pip install --upgrade pip setuptools wheel
+ 
+Requirement already up-to-date: pip in /Applications/anaconda/lib/python3.6/site-packages (19.1.1)
+Collecting setuptools
+  Downloading https://files.pythonhosted.org/packages/ec/51/f45cea425fd5cb0b0380f5b0f048ebc1da5b417e48d304838c02d6288a1e/setuptools-41.0.1-py2.py3-none-any.whl (575kB)
+     |████████████████████████████████| 583kB 67kB/s 
+Collecting wheel
+  Downloading https://files.pythonhosted.org/packages/bb/10/44230dd6bf3563b8f227dbf344c908d412ad2ff48066476672f3a72e174e/wheel-0.33.4-py2.py3-none-any.whl
+ERROR: tensorboard 1.6.0 has requirement bleach==1.5.0, but you'll have bleach 2.1.3 which is incompatible.
+ERROR: tensorboard 1.6.0 has requirement html5lib==0.9999999, but you'll have html5lib 1.0.1 which is incompatible.
+ERROR: anaconda-client 1.6.11 has requirement python-dateutil>=2.6.1, but you'll have python-dateutil 2.6.0 which is incompatible.
+Installing collected packages: setuptools, wheel
+  Found existing installation: setuptools 38.5.1
+    Uninstalling setuptools-38.5.1:
+      Successfully uninstalled setuptools-38.5.1
+  Found existing installation: wheel 0.30.0
+    Uninstalling wheel-0.30.0:
+      Successfully uninstalled wheel-0.30.0
+Successfully installed setuptools-41.0.1 wheel-0.33.4
+Owners-MacBook-Pro:~ Ebony$ 
+Owners-MacBook-Pro:~ Ebony$ pip install psycopg2
+Collecting psycopg2
+  Using cached https://files.pythonhosted.org/packages/5c/1c/6997288da181277a0c29bc39a5f9143ff20b8c99f2a7d059cfb55163e165/psycopg2-2.8.3.tar.gz
+    ERROR: Complete output from command python setup.py egg_info:
+    ERROR: running egg_info
+    creating pip-egg-info/psycopg2.egg-info
+    writing pip-egg-info/psycopg2.egg-info/PKG-INFO
+    writing dependency_links to pip-egg-info/psycopg2.egg-info/dependency_links.txt
+    writing top-level names to pip-egg-info/psycopg2.egg-info/top_level.txt
+    writing manifest file 'pip-egg-info/psycopg2.egg-info/SOURCES.txt'
+    
+    Error: pg_config executable not found.
+    
+    pg_config is required to build psycopg2 from source.  Please add the directory
+    containing pg_config to the $PATH or specify the full executable path with the
+    option:
+    
+        python setup.py build_ext --pg-config /path/to/pg_config build ...
+    
+    or with the pg_config option in 'setup.cfg'.
+    
+    If you prefer to avoid building psycopg2 from source, please install the PyPI
+    'psycopg2-binary' package instead.
+    
+    For further information please check the 'doc/src/install.rst' file (also at
+    <http://initd.org/psycopg/docs/install.html>).
+    
+    ----------------------------------------
+ERROR: Command "python setup.py egg_info" failed with error code 1 in /private/var/folders/kw/mtbfdbw95x9_6n43g02b57gc0000gn/T/pip-install-k_cbvh8i/psycopg2/
+Owners-MacBook-Pro:~ Ebony$ python setup.py build
+python: can't open file 'setup.py': [Errno 2] No such file or directory
+Owners-MacBook-Pro:~ Ebony$ pip install virtualenv
+Requirement already satisfied: virtualenv in /Applications/anaconda/lib/python3.6/site-packages (16.0.0)
+Owners-MacBook-Pro:~ Ebony$ export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
+Owners-MacBook-Pro:~ Ebony$ pip install psycopg2
+Collecting psycopg2
+  Using cached https://files.pythonhosted.org/packages/5c/1c/6997288da181277a0c29bc39a5f9143ff20b8c99f2a7d059cfb55163e165/psycopg2-2.8.3.tar.gz
+    ERROR: Complete output from command python setup.py egg_info:
+    ERROR: running egg_info
+    creating pip-egg-info/psycopg2.egg-info
+    writing pip-egg-info/psycopg2.egg-info/PKG-INFO
+    writing dependency_links to pip-egg-info/psycopg2.egg-info/dependency_links.txt
+    writing top-level names to pip-egg-info/psycopg2.egg-info/top_level.txt
+    writing manifest file 'pip-egg-info/psycopg2.egg-info/SOURCES.txt'
+    
+    Error: pg_config executable not found.
+    
+    pg_config is required to build psycopg2 from source.  Please add the directory
+    containing pg_config to the $PATH or specify the full executable path with the
+    option:
+    
+        python setup.py build_ext --pg-config /path/to/pg_config build ...
+    
+    or with the pg_config option in 'setup.cfg'.
+    
+    If you prefer to avoid building psycopg2 from source, please install the PyPI
+    'psycopg2-binary' package instead.
+    
+    For further information please check the 'doc/src/install.rst' file (also at
+    <http://initd.org/psycopg/docs/install.html>).
+    
+    ----------------------------------------
+ERROR: Command "python setup.py egg_info" failed with error code 1 in /private/var/folders/kw/mtbfdbw95x9_6n43g02b57gc0000gn/T/pip-install-zb7cg42f/psycopg2/
+Owners-MacBook-Pro:~ Ebony$ apt-get build-dep python-psycopg2
+-bash: apt-get: command not found
+Owners-MacBook-Pro:~ Ebony$ PATH=$PATH:/opt/local/lib/postgresql91/bin/
+Owners-MacBook-Pro:~ Ebony$ pip install psycopg2
+Collecting psycopg2
+  Using cached https://files.pythonhosted.org/packages/5c/1c/6997288da181277a0c29bc39a5f9143ff20b8c99f2a7d059cfb55163e165/psycopg2-2.8.3.tar.gz
+    ERROR: Complete output from command python setup.py egg_info:
+    ERROR: running egg_info
+    creating pip-egg-info/psycopg2.egg-info
+    writing pip-egg-info/psycopg2.egg-info/PKG-INFO
+    writing dependency_links to pip-egg-info/psycopg2.egg-info/dependency_links.txt
+    writing top-level names to pip-egg-info/psycopg2.egg-info/top_level.txt
+    writing manifest file 'pip-egg-info/psycopg2.egg-info/SOURCES.txt'
+    
+    Error: pg_config executable not found.
+    
+    pg_config is required to build psycopg2 from source.  Please add the directory
+    containing pg_config to the $PATH or specify the full executable path with the
+    option:
+    
+        python setup.py build_ext --pg-config /path/to/pg_config build ...
+    
+    or with the pg_config option in 'setup.cfg'.
+    
+    If you prefer to avoid building psycopg2 from source, please install the PyPI
+    'psycopg2-binary' package instead.
+    
+    For further information please check the 'doc/src/install.rst' file (also at
+    <http://initd.org/psycopg/docs/install.html>).
+    
+    ----------------------------------------
+ERROR: Command "python setup.py egg_info" failed with error code 1 in /private/var/folders/kw/mtbfdbw95x9_6n43g02b57gc0000gn/T/pip-install-m4ge973m/psycopg2/
+Owners-MacBook-Pro:~ Ebony$ PATH="/Applications/Postgres.app/Contents/Versions/9.3/bin:$PATH"
+Owners-MacBook-Pro:~ Ebony$ pip install psycopg2
+Collecting psycopg2
+  Using cached https://files.pythonhosted.org/packages/5c/1c/6997288da181277a0c29bc39a5f9143ff20b8c99f2a7d059cfb55163e165/psycopg2-2.8.3.tar.gz
+    ERROR: Complete output from command python setup.py egg_info:
+    ERROR: running egg_info
+    creating pip-egg-info/psycopg2.egg-info
+    writing pip-egg-info/psycopg2.egg-info/PKG-INFO
+    writing dependency_links to pip-egg-info/psycopg2.egg-info/dependency_links.txt
+    writing top-level names to pip-egg-info/psycopg2.egg-info/top_level.txt
+    writing manifest file 'pip-egg-info/psycopg2.egg-info/SOURCES.txt'
+    
+    Error: pg_config executable not found.
+    
+    pg_config is required to build psycopg2 from source.  Please add the directory
+    containing pg_config to the $PATH or specify the full executable path with the
+    option:
+    
+        python setup.py build_ext --pg-config /path/to/pg_config build ...
+    
+    or with the pg_config option in 'setup.cfg'.
+    
+    If you prefer to avoid building psycopg2 from source, please install the PyPI
+    'psycopg2-binary' package instead.
+    
+    For further information please check the 'doc/src/install.rst' file (also at
+    <http://initd.org/psycopg/docs/install.html>).
+    
+    ----------------------------------------
+ERROR: Command "python setup.py egg_info" failed with error code 1 in /private/var/folders/kw/mtbfdbw95x9_6n43g02b57gc0000gn/T/pip-install-g9s2j9qr/psycopg2/
+Owners-MacBook-Pro:~ Ebony$ cd dev
+Owners-MacBook-Pro:dev Ebony$ cd STS-Projects/
+Owners-MacBook-Pro:STS-Projects Ebony$ ls
+fullstack-nanodegree-vm	newsdata.zip		udacity-fsd-summer-19
+Owners-MacBook-Pro:STS-Projects Ebony$ cd fullstack-nanodegree-vm/
+Owners-MacBook-Pro:fullstack-nanodegree-vm Ebony$ ls
+CODEOWNERS	vagrant
+Owners-MacBook-Pro:fullstack-nanodegree-vm Ebony$ cd vagrant/
+Owners-MacBook-Pro:vagrant Ebony$ vagrant ssh
+Welcome to Ubuntu 16.04.6 LTS (GNU/Linux 4.4.0-75-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+7 packages can be updated.
+0 updates are security updates.
+
+
+The shared directory is located at /vagrant
+To access your shared files: cd /vagrant
+Last login: Wed Jul  3 01:00:35 2019 from 10.0.2.2
+vagrant@vagrant:~$ cd /vagrant
+vagrant@vagrant:/vagrant$ ls
+catalog  forum  project-one-logs-analysis  README.md  tournament  Vagrantfile
+vagrant@vagrant:/vagrant$ cd project-one-logs-analysis/
+vagrant@vagrant:/vagrant/project-one-logs-analysis$ ls
+newsdata.sql  newsdb_copy.py
+vagrant@vagrant:/vagrant/project-one-logs-analysis$ python3 newsdb_copy.py 
+Traceback (most recent call last):
+  File "newsdb_copy.py", line 3, in <module>
+    import psycopg2
+ImportError: No module named 'psycopg2'
+vagrant@vagrant:/vagrant/project-one-logs-analysis$ pip install psycopg2
+DEPRECATION: Python 2.7 will reach the end of its life on January 1st, 2020. Please upgrade your Python as Python 2.7 won't be maintained after that date. A future version of pip will drop support for Python 2.7.
+Requirement already satisfied: psycopg2 in /usr/lib/python2.7/dist-packages (2.6.1)
+vagrant@vagrant:/vagrant/project-one-logs-analysis$ python newsdb_copy.py 
+vagrant@vagrant:/vagrant/project-one-logs-analysis$ 
