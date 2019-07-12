@@ -62,12 +62,12 @@ This project is a reporting tool that runs queries a a database called `news`. T
 
 * Use views to print out your answers.
 
-    1. create view top_articles as select slug, count slug as pageviews from articles
-    left join log on replace(log.path, '/article/', ') = articles.slug group by slug
+1. create view top_articles as select slug, count slug as pageviews from articles
+   left join log on replace(log.path, '/article/', ') = articles.slug group by slug
 
-    2. create view top_authors as select slug, count slug as pageviews from articles
-    left join log on replace(log.path, '/article/', ') = articles.slug group by slug
+2. create view top_authors as select slug, count slug as pageviews from articles
+   left join log on replace(log.path, '/article/', ') = articles.slug group by slug
 
-    3. create view as num_errors select time, status, count(status) as num_errors group
-     by time order by num_errors      
+3. create view as num_errors select time, status, count(status) as num_errors group
+   by time order by num_errors      
 
