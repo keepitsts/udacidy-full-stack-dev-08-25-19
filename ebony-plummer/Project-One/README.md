@@ -1,0 +1,1 @@
+This project is a reporting tool that runs queries a a dataase called news. The database was created using the Python DB API. The queries are wun in Postgresql on a virtual machine.
