@@ -27,13 +27,13 @@ class Catagory(Base):
         }
 
 
-class bookItem(Base):
+class BookItem(Base):
     __tablename__ = "book_item"
     id = Column(Integer, primary_key=True)
     title = Column(String(100), nullable=False)
     author = Column(String(100), nullable=False)
     genre = Column(String(100), nullable=False)
-    description = Column(String(250), nullable=True)
+    description = Column(String(500), nullable=True)
     price = Column(String(10))
     catagory_id = Column(Integer, ForeignKey('catagory.id'))
     catagory = relationship(Catagory)
@@ -51,7 +51,7 @@ class bookItem(Base):
         'price' : self.price,
         }    
 
-class musicItem(Base):
+class MusicItem(Base):
     __tablename__ = "music_item"
     id = Column(Integer, primary_key=True)
     title = Column(String(100), nullable=False)
@@ -73,12 +73,14 @@ class musicItem(Base):
         'price' : self.price,
         }
     
-class movieItem(Base):
+class MovieItem(Base):
     __tablename__ = "movie_item"
     id = Column(Integer, primary_key=True)
     title = Column(String(100), nullable=False)
+    stars = Column(String(250), nullable=True)
+    director = Column(String(100), nullable=False)
     genre = Column(String(100), nullable=False)
-    description = Column(String(250), nullable=True)
+    description = Column(String(500), nullable=True)
     price = Column(String(10), nullable=False)
     store_catagory_id = Column(Integer, ForeignKey('catagory.id'))
     catagory = relationship(Catagory)
