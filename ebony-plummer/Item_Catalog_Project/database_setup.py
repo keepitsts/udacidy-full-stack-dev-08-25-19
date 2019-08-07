@@ -24,8 +24,8 @@ class Catagory(Base):
         }
 
 
-class BookItem(Base):
-    __tablename__ = "book_item"
+class StoreItem(Base):
+    __tablename__ = "storeItem"
     id = Column(Integer, primary_key=True)
     title = Column(String(100), nullable=False)
     author = Column(String(100), nullable=False)
@@ -47,7 +47,7 @@ class BookItem(Base):
         'description' : self.description,   
         'price' : self.price,
         }    
-
+"""
 class MusicItem(Base):
     __tablename__ = "music_item"
     id = Column(Integer, primary_key=True)
@@ -93,7 +93,7 @@ class MovieItem(Base):
         'price' : self.price
     }
     
-
+"""
 #Create Database
 
 engine = create_engine('sqlite:///storeitems.db')
