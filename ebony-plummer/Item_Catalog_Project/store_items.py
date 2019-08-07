@@ -1,14 +1,17 @@
 #Importing SQLAlchemy and other imports from sqlalchemy import create_engine
+from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker 
-from database_setup import Catagory,
-BookItem, MusicItem, MovieItem
+from database_setup import Catagory, Base, BookItem, MusicItem, MovieItem
 
 #Create the engine and bind the engine to the metadata.
 engine = create_engine('sqlite:///storeitems.db')
 
 Base.metadata.bind = engine
 
+#Create a session.
 DBSession = sessionmaker(bind=engine)
+
+session = DBSession()
 
 #Item inventory for the books section.
 bookCatagory = Catagory(name="Books")
@@ -16,7 +19,7 @@ bookCatagory = Catagory(name="Books")
 session.add(bookCatagory)
 session.commit()
 
-book1 = BookItem(title="Python Crash Course", author=Eric Matthes, genre="Computer Programming",\
+book1 = BookItem(title="Python Crash Course", author="Eric Matthes", genre="Computer Programming",\
 		description="A hands-on, project-based introduction to programming.", price="29.95",\
 		catagory=bookCatagory)
 
@@ -24,7 +27,7 @@ session.add(book1)
 session.commit()
 
 book2 = BookItem(title="Automate the Boring Stuff with Python", author="Al Sweigart", \
-	    genre="Computer Programming", description="Practical programming for beginners"\
+	    genre="Computer Programming", description="Practical programming for beginners",\
 	    price="29.95", catagory=bookCatagory)
 
 session.add(book2)
@@ -38,7 +41,7 @@ book3 = BookItem(title="Don Quioxte", author="Migual De Cervantes", genre="Class
 		people to have lost his mind from little sleep and food and because of so much reading.",\
 		price="15.00", catagory=bookCatagory)
 
-session.add(Book3)
+session.add(book3)
 session.commit()
 
 book4 = BookItem(title="A Brief History of Time", author="Stephen Hawking", genre="Science",\
@@ -80,13 +83,13 @@ album2 = MusicItem(title="1999", artist="Prince", genre="R&B/Soul", price="$10.0
 session.add(album2)
 session.commit()
 
-album3 = MusicItem(title="Tapestry", artist="Carol King", genre="Pop", Price="$10.00",\
+album3 = MusicItem(title="Tapestry", artist="Carol King", genre="Pop", price="$10.00",\
 		 catagory=musicCatagory)
 
 session.add(album3)
 session.commit()
 
-album4 = MusicItem(title="21", artist="Adele", genre="Pop", Price="$10.00")
+album4 = MusicItem(title="21", artist="Adele", genre="Pop", price="$10.00")
 
 session.add(album4)
 session.commit()
@@ -161,3 +164,6 @@ movie5 = MovieItem(title="Star Wars", genre="Science Fiction", director="George 
 
 session.add(movie5)
 session.commit()
+
+
+print("Added Store Items!")
