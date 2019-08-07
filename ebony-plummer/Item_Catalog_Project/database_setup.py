@@ -9,12 +9,9 @@ from sqlalchemy import create_engine
 
 Base = declarative_base()
 
-engine = create_engine('sqlite:///storeitems.db')
-
-Base.metadata.create_all(engine)
 
 class Catagory(Base):
-    __tablename__ = 'store_catagory'
+    __tablename__ = 'catagory'
     id = Column(Integer, primary_key=True)
     name = Column(String(100), nullable=False)
 
@@ -96,5 +93,10 @@ class MovieItem(Base):
         'price' : self.price
     }
     
-        
+
+#Create Database
+
+engine = create_engine('sqlite:///storeitems.db')
+
+Base.metadata.create_all(engine)  
     
