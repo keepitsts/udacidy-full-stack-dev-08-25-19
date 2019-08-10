@@ -7,6 +7,9 @@ from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
 
 
+Base = declarative_base()
+
+
 #Created Catagory Class
 class Catagory(Base):
     __tablename__ = 'catagory'
