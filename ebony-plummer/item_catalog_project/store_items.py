@@ -27,7 +27,7 @@ catagory1 = Catagory(name="Books")
 session.add(catagory1)
 session.commit()
 
-storeItem1 = StoreItem(name="Python Crash Course", author="Eric Matthes", genre="Computer Programming"
+storeItem1 = StoreItem(name="Python Crash Course", author="Eric Matthes", genre="Computer Programming",
              price="$25.00", description="A hands-on, project-based introduction to programming.",\
              catagory=catagory1)
 
@@ -117,7 +117,7 @@ session.commit()
 
 catagory3 = Catagory(name="Movies")
 
-session.add()
+session.add(catagory3)
 session.commit()
 
 storeItem11 = StoreItem(name="Citizen Kane (1941)", author="Orson Wells", genre="Drama", price="$10.00",\
@@ -128,7 +128,7 @@ storeItem11 = StoreItem(name="Citizen Kane (1941)", author="Orson Wells", genre=
               deep focus cinematography, soundtrack, literate screenplay, and nuanced portrayal of the central 
               character.""", catagory=catagory3)
 session.add(storeItem11)
-session.commIt()
+session.commit()
 
 storeItem12 = StoreItem(name="All about Eve (1950", author="Joseph L. Mankiewicz", genre="Drama", price="$10.00",\
               description="""Stars: Bette Davis; Anne Baxter; George Sanders; Celeste Holm; Thelma Ritter
