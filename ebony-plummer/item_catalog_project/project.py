@@ -1,5 +1,5 @@
 #Import Dependencies
-from flask import Flask, render_template, request, redirect, jsonify, url_for
+from flask import Flask, render_template, request, redirect, jsonify, url_for, flash
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from database_setup import Base, Catagory, StoreItem
@@ -69,6 +69,7 @@ def newCatagory():
         newCatagory = Catagory(name=request.form['name'])
         session.add(newCatagory)
         session.commit()
+        flash("New catagory created!")
         return redirect(url_for('#'))
     else:
         return render_template()
@@ -82,6 +83,9 @@ def editCatagory(catagory_id):
     if request.method == 'POST':
         if request.form['name']:
             editedCatagory.name = request.form['name']
+            session.add(editedCatagory)
+            session.commit()
+            flash("Catagory has been edited")
             return redirect(url_for('showCatagories'))
     else:
         return render_template('editCatagory.html', catagory=editedCatagory)        
@@ -94,6 +98,7 @@ def deleteCatagory(catagory_id):
     if request.method == 'POST':
         session.delete(catagoryToDelete)
         session.commit()
+        flash("Catagory has been deleted!")
         return "This function deletes a catagory."
     else:
         return "This is a test."
@@ -119,6 +124,7 @@ def newStoreItem(catagory_id):
 
         session.add(newStoreItem)
         session.commit()
+        flash("New item has been created!")
 
         return "This function adds a new menu item."
 
@@ -140,6 +146,7 @@ def editStoreItem(catagory_id,item_id):
 
         session.add(editedStoreItem)
         session.commit()
+        flash("Item has been edited!")
         return "Here you can edit an item."
 
     else:
@@ -153,6 +160,7 @@ def deleteStoreItem(catagory_id, item_id):
     if request.method == 'POST':
         session.delete(itemToDelete)
         session.commit()
+        flash("Item has been deleted!")
         return "Item Deleted"
     else:
         return "Test"
@@ -160,5 +168,6 @@ def deleteStoreItem(catagory_id, item_id):
 #Starting the Flask Server
 
 if __name__ == '__main__':
+    app.secret_key = 'super_secret_key'
     app.debug = True
     app.run(host='localhost', port=5000)
