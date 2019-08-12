@@ -11,9 +11,9 @@
 	<body>
 		<!-- Nav Bar -->
 		<nav class="navbar navbar-light bg-light">
-  		 	<a class="navbar-brand" href="{{url_for('showCatagories')}}">Home</a>
+  		 	<a class="navbar-brand" href="#">Navbar</a>
 			<ul class="nav justify-content-end">
-  				<li class="nav-item">
+  				<li class="nav-">
     			<a class="nav-link active" href="{{url_for('newCatagory')}}" method='POST'>Create New Catagory</a>
   				</li>
   				<li class="nav-item">
@@ -32,13 +32,15 @@
 			<div class="row">
 				<div class="col-2"></div>
 				<div class="col-8">
-					<h1>Edit Catagory</h1>
+	{% for item in items %}
+					<h1>Are you sure you want to delete {{item.name}}?</h1>
 					
-					<form action="{{url_for('editCatagory',catagory_id = catagory.id)}}" method = 'post'>
+					<form action="{{url_for('deleteStoreItem',catagory_id = catagory.id)}}" method = 'post'>
 						<p>Name:</p>
-							<input type='text' size='30' name='name' placeholder = '{{catagory.name}}'>
-						<button type="submit" class="btn btn-primary">Edit</button>
-						<a href='{{url_for('showCatagories')}}'> Cancel</a>
+							<input type='text' size='30' name='name' placeholder = '{{item.name}}'>
+						<button type="submit" class="btn btn-primary">Delete</button>
+						<a href='{{url_for('showStoreItems')}}'> Cancel</a>
+	{% endfor %}	
 	
 					</form>
 				</div>

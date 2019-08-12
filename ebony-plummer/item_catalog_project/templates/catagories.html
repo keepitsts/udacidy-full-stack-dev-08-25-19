@@ -31,14 +31,13 @@
 		<!-- Main Content -->
 			<div class="container">
 				<div class="row">
-					<div class="col-2">
-						
+					<div class="col-2">	
 					</div>
 					<div class="col-8">
 						<h1>Welcome to Oracle Books!</h1>
 						<h2>Catagories</h2>
 						{% for catagory in catagories %}
-						<a href="{{url_for('showCatagories', catagory_id=catagory.id)}}"><h3>{{catagory.name}}</h3></a>
+						<a href="{{url_for('showItems', catagory_id=catagory.id)}}"><h3>{{catagory.name}}</h3></a>
 						<p><a href="{{url_for('editCatagory', catagory_id=catagory.id)}}">Edit Catagory</a></p>
 						<p><a href="{{url_for('deleteCatagory', catagory_id=catagory.id)}}">Delete Catagory</a></p>
 						{% endfor %}

@@ -6,12 +6,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <title>Edit a Catagory</title>
+        <title>Edit an Item</title>
 	</head>
 	<body>
 		<!-- Nav Bar -->
 		<nav class="navbar navbar-light bg-light">
-  		 	<a class="navbar-brand" href="{{url_for('showCatagories')}}">Home</a>
+  		 	<a class="navbar-brand" href="#">Navbar</a>
 			<ul class="nav justify-content-end">
   				<li class="nav-item">
     			<a class="nav-link active" href="{{url_for('newCatagory')}}" method='POST'>Create New Catagory</a>
@@ -32,15 +32,32 @@
 			<div class="row">
 				<div class="col-2"></div>
 				<div class="col-8">
-					<h1>Edit Catagory</h1>
-					
-					<form action="{{url_for('editCatagory',catagory_id = catagory.id)}}" method = 'post'>
-						<p>Name:</p>
-							<input type='text' size='30' name='name' placeholder = '{{catagory.name}}'>
+					<h1> Edit a Store Item</h1>
+		{% if items !=[] %}			
+					{% for item in items %}
+					<form action="{{url_for('editStoreItem', catagory_id=catagory.id, item_id=item.id}}'" method='post'>
+						<dl>
+							<dt>Name:
+								<dd><input type='text' size='30' name='name' placeholder='{{item.name}}'></dd>
+							</dt>
+							<dt>Author:
+								<dd><input type='text' size='15' name='author' placeholder='{{item.author}}'></dd>
+							</dt>
+							<dt>Name:
+								<dd><input type='text' size='15' name='genre' placeholder='{{item.genre}}'></dd>
+							</dt>
+							<dt>Author:
+								<dd><input type='text' size='15' name='price' placeholder='{{item.price}}'></dd>
+							</dt>
+							<dt>
+								<dd><textarea name='description' rows='5' cols='40' placeholder='{{item.description}}'></textarea></dd>
+					{ % endfor %}
+		{% endif %}			
+							</dt>
+						</dl>
 						<button type="submit" class="btn btn-primary">Edit</button>
-						<a href='{{url_for('showCatagories')}}'> Cancel</a>
-	
-					</form>
+						<a href='{{url_for('showStoreItems')}}'> Cancel</a>
+					</form>	
 				</div>
 				<div class="col-2"></div>
 			</div>
