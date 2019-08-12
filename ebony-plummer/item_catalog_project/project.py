@@ -29,7 +29,7 @@ def showStoreItemJSON():
     storeItem = session.query(StoreItem).all()
     return jsonify(storeItem=[s.serialize for s in storeItem])
 
-"""
+
 @app.route('/catagory/items/JSON')
 def showCatagoryItemsJSON():
     catagory = session.query(StoreItem).filter_by(id=catagory_id).one()
@@ -41,7 +41,7 @@ def showCatagoryItemsJSON():
 def storeItemsJSON(catagory_id, item_id):
     store_item = session.query(StoreItem).all()
     return jsonify(store_item=store_item.serialize)
-"""
+
 
 
 """
@@ -70,9 +70,9 @@ def newCatagory():
         session.add(newCatagory)
         session.commit()
         flash("New catagory created!")
-        return redirect(url_for('#'))
+        return redirect(url_for('showCatagories'))
     else:
-        return render_template()
+        return render_template('newCatagory.html')
 
 
 #Edit a catagory.
@@ -99,9 +99,9 @@ def deleteCatagory(catagory_id):
         session.delete(catagoryToDelete)
         session.commit()
         flash("Catagory has been deleted!")
-        return "This function deletes a catagory."
+        return redirect(url_for('showCatagories', catagory_id=catagory_id))
     else:
-        return "This is a test."
+        return render_template('deleteCatagory.html', catagory=catagoryToDelete)
 
 
 
@@ -113,23 +113,26 @@ def deleteCatagory(catagory_id):
 def showItems(catagory_id):
     catagory = session.query(Catagory).filter_by(id=catagory_id).one()
     items = session.query(StoreItem).filter_by(catagory_id=catagory_id).all()
-    return "this function shows all the items in a catagory."
+    return render_template('item.html', items=items, catagory=catagory)
 
 #Create a new store item.
-@app.route('/catagory/<int:catagory_id>/items/new/', methods=['GET','POST'])
-def newStoreItem(catagory_id):
+@app.route('/catagory/<int:catagory_id>/<int:item_id>new/', methods=['GET','POST'])
+def newStoreItem(catagory_id, item_id):
+    catagory = session.query(Catagory).filter_by(id=catagory_id).one()
     if request.method == 'POST':
-        newStoreItem = StoreItem(name=request.form['name'], author=request.form['author'],\
-        genre=request.form['genre'], price=request.form['price'], description=request.form['description'])
+        newItem = StoreItem(name=request.form['name'], author=request.form['author'],genre=request.form['genre'], price=request.form['price'], description=request.form['description'])
 
-        session.add(newStoreItem)
+        session.add(newItem)
         session.commit()
         flash("New item has been created!")
 
-        return "This function adds a new menu item."
+        return redirect(url_for('showItems', catagory_id=catagory_id, item_id=item_id))
+
+    else:
+        return render_template('newItem.html', catagory_id=newItem)
 
 #Edit a store item.
-@app.route('/catagory/<int:catagory_id>/items/<int:item_id>/edit', methods=['GET', 'POST'])
+@app.route('/catagory/<int:catagory_id>/<int:item_id>/edit/', methods=['GET', 'POST'])
 def editStoreItem(catagory_id,item_id):
     editedStoreItem = session.query(StoreItem).filter_by(id=item_id).one()
     if request.method == 'POST':
@@ -150,7 +153,7 @@ def editStoreItem(catagory_id,item_id):
         return "Here you can edit an item."
 
     else:
-        return "Test"
+        return 
 
 
 #Delete a store item.
