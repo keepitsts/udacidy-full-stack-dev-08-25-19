@@ -1,20 +1,21 @@
 <!doctype html>
-<html>
+<html lang="en">
 	<head>
 		<!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <title>Edit an Item</title>
+        <title>Oracle Books</title>
 	</head>
 	<body>
+		{
 		<!-- Nav Bar -->
 		<nav class="navbar navbar-light bg-light">
-  		 	<a class="navbar-brand" href="{{url_for('showCategories')}}">Oracle Books</a>
+  		 	<a class="navbar-brand" href="{{url_for('publicCatalog')}}">Oracle Books</a>
 			<ul class="nav justify-content-end">
   				<li class="nav-item">
-    			<a class="nav-link active" href="#" method='POST'></a>
+    			<a class="nav-link active" href="#">Link</a>
   				</li>
   				<li class="nav-item">
     			<a class="nav-link" href="#">Link</a>
@@ -23,44 +24,36 @@
     			<a class="nav-link" href="#">Link</a>
   				</li>
   				<li class="nav-item">
-    			<a class="nav-link" href="#" tabindex="-1">Login</a>
+    			<a class="nav-link" href="#" tabindex="-1" aria-disabled="False">Login</a>
   				</li>
 			</ul>
 		</nav>
+
 		<!-- Main Content -->
-		<div class="container">
-			<div class="row">
-				<div class="col-2"></div>
-				<div class="col-8">
-					<h1> Edit a Store Item</h1>
-				
-					<form action="{{url_for('editStoreItem', category_id=category_id, item_id=item.id)}}" method='post'>
-						<dl>
-							<dt>Name:
-								<dd><input type='text' size='30' name='name' placeholder='{{item.name}}'></dd>
-							</dt>
-							<dt>Author:
-								<dd><input type='text' size='15' name='author' placeholder='{{item.author}}'></dd>
-							</dt>
-							<dt>Name:
-								<dd><input type='text' size='15' name='genre' placeholder='{{item.genre}}'></dd>
-							</dt>
-							<dt>Author:
-								<dd><input type='text' size='15' name='price' placeholder='{{item.price}}'></dd>
-							</dt>
-							<dt>
-								<dd><textarea name='description' rows='5' cols='40' placeholder='{{item.description}}'></textarea></dd>
-					
-					
-							</dt>
-						</dl>
-						<button type="submit" class="btn btn-primary">Edit</button>
-						<a href = "{{url_for('showItems', category_id=category_id)}}">Cancel</a>
-					</form>	
+			<div class="container">
+				<div class="row">
+					<div class="col-2">
+					</div>	
+					<div class="col-8">
+						<h1>Item Listing</h1>
+					{% if items !=[] %}
+									{% for i in items %}
+											<div class="store-item">
+												<a href="{{url_for('viewItemPublic',category_id=i.category_id, item_id=i.id)}}"><h3>{{i.name}}</h3></a>
+												<p>{{i.author}}</p>
+												<p>{{i.genre}}</p>
+												<p>{{i.price}}</p>
+												<p>{{i.descrption</p>}}
+
+						
+											</div>
+									{% endfor %}
+				{% endif %}							
+					</div>		
+					</div>
+					<div class="col-2">
 				</div>
-				<div class="col-2"></div>
 			</div>
-		</div>
 		<!-- Bootstrap Javascript -->
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

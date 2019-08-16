@@ -11,10 +11,10 @@
 	<body>
 		<!-- Nav Bar -->
 		<nav class="navbar navbar-light bg-light">
-  		 	<a class="navbar-brand" href="#">Navbar</a>
+  		 	<a class="navbar-brand" href="{{url_for('showCategories')}}">Oracle Books</a>
 			<ul class="nav justify-content-end">
   				<li class="nav-item">
-    			<a class="nav-link active" href="{{url_for('newCatagory')}}" method='POST'>Create New Catagory</a>
+    			<a class="nav-link active" href="#" method='POST'></a>
   				</li>
   				<li class="nav-item">
     			<a class="nav-link" href="#">Link</a>
@@ -23,7 +23,7 @@
     			<a class="nav-link" href="#">Link</a>
   				</li>
   				<li class="nav-item">
-    			<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+    			<a class="nav-link" href="#" tabindex="-1" aria-disabled="false">Login</a>
   				</li>
 			</ul>
 		</nav>
@@ -33,7 +33,7 @@
 				<div class="col-2"></div>
 				<div class="col-8">
 					<h1> Create Store Item</h1>
-					<form action="#" method='post'>
+					<form action="{{url_for('newStoreItem',category_id = category_id)}}" method='post'>
 						<dl>	
 							<dt>Name:
 								<dd><input type='text' size='30' name='name' required></dd>
@@ -52,7 +52,7 @@
 							</dt>
 						</dl>
 						<button type="submit" class="btn btn-primary">Create</button>
-						<a href='{{url_for('showItems')}}'> Cancel</a>
+						<a href='{{url_for('showItems', category_id = category_id)}}'> Cancel</a>
 					</form>	
 				</div>
 				<div class="col-2"></div>

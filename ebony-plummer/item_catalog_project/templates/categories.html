@@ -1,55 +1,52 @@
 <!doctype html>
-<html>
+<html lang="en">
 	<head>
 		<!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <title>Items</title>
+        <title>Oracle Books</title>
 	</head>
 	<body>
 		<!-- Nav Bar -->
 		<nav class="navbar navbar-light bg-light">
-  		 	<a class="navbar-brand" href="{{url_for('showCatagories')}}">Home</a>
+  		 	<a class="navbar-brand" href="{{url_for('showCategories')}}">Oracle Books</a>
 			<ul class="nav justify-content-end">
-  				<<li class="nav-item">
-    			<a class="nav-link active" href="#"></a>
-  				</li>
   				<li class="nav-item">
-    			<a class="nav-link" href="#"></a>
+    			<a class="nav-link active" href="{{url_for('newCategory')}}">Create New Catagory</a>
   				</li>
   				<li class="nav-item">
     			<a class="nav-link" href="#">Link</a>
   				</li>
   				<li class="nav-item">
-    			<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+    			<a class="nav-link" href="#">Link</a>
+  				</li>
+  				<li class="nav-item">
+    			<a class="nav-link" href="#" tabindex="-1" aria-disabled="false">Login</a>
   				</li>
 			</ul>
 		</nav>
-		<!-- Main Content -->
-		<div class="container">
-			<div class="row">
-				<div class="col-2"></div>
-				<div class="col-8">
-				{% if items !=[] %}
-									{% for i in items %}
-											<div class="store-item">
-												<h3>{{i.name}}</h3>
-												<p>{{i.author}}</p>
-												<p>{{i.genre}}</p>
-												<p>{{i.price}}</p>
-												<p>{{i.description}}</p>
 
-						<p><a href="{{url_for('editStoreItem', item_id=item_id)}}">Edit Item</a></p>
-						<p><a href="{{url_for('deleteStoreItem', item_id=item_id)}}">Delete </a></p>
-											</div>
-									{% endfor %}
-				{% endif %}							
+		<!-- Main Content -->
+			<div class="container">
+				<div class="row">
+					<div class="col-2">
+					</div>	
+					<div class="col-8">
+						<h1>Welcome to Oracle Books!</h1>		
+						<h2>Categories</h2>
+
+						{% for category in categories %}
+						<a href="{{url_for('showItems', category_id=category.id)}}"><h3>{{category.name}}</h3></a>		
+						<p><a href="{{url_for('editCategory', category_id=category.id)}}">Edit Category</a></p>
+						<p><a href="{{url_for('deleteCategory', category_id=category.id)}}">Delete Category</a></p>
+						{% endfor %}	
+				</div>		
+					</div>
+					<div class="col-2">
 				</div>
-				<div class="col-2"></div>
 			</div>
-		</div>
 		<!-- Bootstrap Javascript -->
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

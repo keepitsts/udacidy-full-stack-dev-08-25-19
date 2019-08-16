@@ -1,20 +1,20 @@
 <!doctype html>
-<html lang="en">
+<html>
 	<head>
 		<!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <title>Oracle Books</title>
+        <title>Edit a Catagory</title>
 	</head>
 	<body>
 		<!-- Nav Bar -->
 		<nav class="navbar navbar-light bg-light">
-  		 	<a class="navbar-brand" href="#">Navbar</a>
+  		 	<a class="navbar-brand" href="{{url_for('showCategories')}}">Oracle Books</a>
 			<ul class="nav justify-content-end">
   				<li class="nav-item">
-    			<a class="nav-link active" href="{{url_for('newCatagory')}}">Create New Catagory</a>
+    			<a class="nav-link active" href="{{url_for('newCategory')}}" method='POST'>Create New Category</a>
   				</li>
   				<li class="nav-item">
     			<a class="nav-link" href="#">Link</a>
@@ -27,24 +27,24 @@
   				</li>
 			</ul>
 		</nav>
-
 		<!-- Main Content -->
-			<div class="container">
-				<div class="row">
-					<div class="col-2">	
-					</div>
-					<div class="col-8">
-						<h1>Welcome to Oracle Books!</h1>
-						<h2>Catagories</h2>
-						{% for catagory in catagories %}
-						<a href="{{url_for('showItems', catagory_id=catagory.id)}}"><h3>{{catagory.name}}</h3></a>
-						<p><a href="{{url_for('editCatagory', catagory_id=catagory.id)}}">Edit Catagory</a></p>
-						<p><a href="{{url_for('deleteCatagory', catagory_id=catagory.id)}}">Delete Catagory</a></p>
-						{% endfor %}
-					</div>
-					<div class="col-2">
+		<div class="container">
+			<div class="row">
+				<div class="col-2"></div>
+				<div class="col-8">
+					<h1>Edit Category</h1>
+					
+					<form action="{{url_for('editCategory',category_id = category.id)}}" method = 'post'>
+						<p>Name:</p>
+							<input type='text' size='30' name='name' placeholder = '{{category.name}}'>
+						<button type="submit" class="btn btn-primary">Edit</button>
+						<a href='{{url_for('showCategories')}}'> Cancel</a>
+	
+					</form>
 				</div>
+				<div class="col-2"></div>
 			</div>
+		</div>
 		<!-- Bootstrap Javascript -->
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

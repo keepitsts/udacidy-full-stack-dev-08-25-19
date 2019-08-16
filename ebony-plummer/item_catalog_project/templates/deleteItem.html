@@ -6,15 +6,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <title>Edit a Catagory</title>
+        <title>Delete an item</title>
 	</head>
 	<body>
 		<!-- Nav Bar -->
 		<nav class="navbar navbar-light bg-light">
-  		 	<a class="navbar-brand" href="#">Navbar</a>
+  		 	<a class="navbar-brand" href="{{url_for('showCategories')}}">Oracle Books</a>
 			<ul class="nav justify-content-end">
   				<li class="nav-">
-    			<a class="nav-link active" href="{{url_for('newCatagory')}}" method='POST'>Create New Catagory</a>
+    			<a class="nav-link active" href="#" method='POST'></a>
   				</li>
   				<li class="nav-item">
     			<a class="nav-link" href="#">Link</a>
@@ -23,7 +23,7 @@
     			<a class="nav-link" href="#">Link</a>
   				</li>
   				<li class="nav-item">
-    			<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+    			<a class="nav-link" href="#" tabindex="-1" aria-disabled="false">Login</a>
   				</li>
 			</ul>
 		</nav>
@@ -32,15 +32,13 @@
 			<div class="row">
 				<div class="col-2"></div>
 				<div class="col-8">
-	{% for item in items %}
 					<h1>Are you sure you want to delete {{item.name}}?</h1>
 					
-					<form action="{{url_for('deleteStoreItem',catagory_id = catagory.id)}}" method = 'post'>
+					<form action="{{url_for('deleteStoreItem',category_id = item.category_id, inventory_id=item.id)}}" method = 'post'>
 						<p>Name:</p>
 							<input type='text' size='30' name='name' placeholder = '{{item.name}}'>
 						<button type="submit" class="btn btn-primary">Delete</button>
-						<a href='{{url_for('showStoreItems')}}'> Cancel</a>
-	{% endfor %}	
+						<a href='{{url_for('showItems', category_id=item.category_id)}}'>Cancel</a>	
 	
 					</form>
 				</div>

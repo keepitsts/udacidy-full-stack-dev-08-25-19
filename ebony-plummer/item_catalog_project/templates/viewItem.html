@@ -1,14 +1,17 @@
 <!doctype html>
 <html>
 	<head>
+		
 		<!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <title>Edit an Item</title>
+        <title>{{item.name}}</title>
+        
 	</head>
 	<body>
+		
 		<!-- Nav Bar -->
 		<nav class="navbar navbar-light bg-light">
   		 	<a class="navbar-brand" href="{{url_for('showCategories')}}">Oracle Books</a>
@@ -27,36 +30,28 @@
   				</li>
 			</ul>
 		</nav>
+		
 		<!-- Main Content -->
 		<div class="container">
 			<div class="row">
-				<div class="col-2"></div>
+				<div class="col-2">
+				</div>
 				<div class="col-8">
-					<h1> Edit a Store Item</h1>
+				  <div id="item_content">		
 				
-					<form action="{{url_for('editStoreItem', category_id=category_id, item_id=item.id)}}" method='post'>
-						<dl>
-							<dt>Name:
-								<dd><input type='text' size='30' name='name' placeholder='{{item.name}}'></dd>
-							</dt>
-							<dt>Author:
-								<dd><input type='text' size='15' name='author' placeholder='{{item.author}}'></dd>
-							</dt>
-							<dt>Name:
-								<dd><input type='text' size='15' name='genre' placeholder='{{item.genre}}'></dd>
-							</dt>
-							<dt>Author:
-								<dd><input type='text' size='15' name='price' placeholder='{{item.price}}'></dd>
-							</dt>
-							<dt>
-								<dd><textarea name='description' rows='5' cols='40' placeholder='{{item.description}}'></textarea></dd>
-					
-					
-							</dt>
-						</dl>
-						<button type="submit" class="btn btn-primary">Edit</button>
-						<a href = "{{url_for('showItems', category_id=category_id)}}">Cancel</a>
-					</form>	
+
+					<div class="jumbotron">
+					  <h1 class="display-4">{{item.name}}</h1>
+					  <p class="lead">{{item.author}}</p>
+					  <hr class="my-4">
+					  <p>{{item.genre}}</p>
+					  <p>{{item.price}}</p>
+					  <p>{{item.description}}</p>
+
+					  <p><a href="{{url_for('editStoreItem', category_id=category.id, item_id=item.id)}}">Edit Item</a></p>
+
+					</div>
+				   </div>	
 				</div>
 				<div class="col-2"></div>
 			</div>

@@ -1,20 +1,23 @@
 <!doctype html>
 <html>
 	<head>
+		
 		<!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <title>Edit a Catagory</title>
+        <title>{{item.name}}</title>
+        
 	</head>
 	<body>
+		
 		<!-- Nav Bar -->
 		<nav class="navbar navbar-light bg-light">
-  		 	<a class="navbar-brand" href="{{url_for('showCatagories')}}">Home</a>
+  		 	<a class="navbar-brand" href="{{url_for('publicCatalog')}}">Oracle Books</a>
 			<ul class="nav justify-content-end">
   				<li class="nav-item">
-    			<a class="nav-link active" href="{{url_for('newCatagory')}}" method='POST'>Create New Catagory</a>
+    			<a class="nav-link active" href="#" method='POST'></a>
   				</li>
   				<li class="nav-item">
     			<a class="nav-link" href="#">Link</a>
@@ -23,24 +26,29 @@
     			<a class="nav-link" href="#">Link</a>
   				</li>
   				<li class="nav-item">
-    			<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+    			<a class="nav-link" href="#" tabindex="-1">Login</a>
   				</li>
 			</ul>
 		</nav>
+		
 		<!-- Main Content -->
 		<div class="container">
 			<div class="row">
-				<div class="col-2"></div>
+				<div class="col-2">
+				</div>
 				<div class="col-8">
-					<h1>Edit Catagory</h1>
-					
-					<form action="{{url_for('editCatagory',catagory_id = catagory.id)}}" method = 'post'>
-						<p>Name:</p>
-							<input type='text' size='30' name='name' placeholder = '{{catagory.name}}'>
-						<button type="submit" class="btn btn-primary">Edit</button>
-						<a href='{{url_for('showCatagories')}}'> Cancel</a>
-	
-					</form>
+				  <div id="item_content">		
+				
+
+					<div class="jumbotron">
+					  <h1 class="display-4">{{item.name}}</h1>
+					  <p class="lead">{{item.author}}</p>
+					  <hr class="my-4">
+					  <p>{{item.genre}}</p>
+					  <p>{{item.price}}</p>
+					  <p>{{item.description}}</p>
+					</div>
+				   </div>	
 				</div>
 				<div class="col-2"></div>
 			</div>
