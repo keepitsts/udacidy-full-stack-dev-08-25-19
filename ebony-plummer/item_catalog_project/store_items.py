@@ -4,7 +4,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from database_setup import Catagory, Base, StoreItem
+from database_setup import Category, Base, StoreItem
 
 #Connect to the database that was created in the database_set.py file.
 engine = create_engine('sqlite:///storeitemsinventory.db')
@@ -22,21 +22,21 @@ session = DBSession()
 
 #Books
 
-catagory1 = Catagory(name="Books")
+category1 = Category(name="Books")
 
-session.add(catagory1)
+session.add(category1)
 session.commit()
 
 storeItem1 = StoreItem(name="Python Crash Course", author="Eric Matthes", genre="Computer Programming",
              price="$25.00", description="A hands-on, project-based introduction to programming.",\
-             catagory=catagory1)
+             category=category1)
 
 session.add(storeItem1)
 session.commit()
 
 storeItem2 = StoreItem(name="Automate the Boring Stuff with Python", author='Al Sweigart',
              genre="Compute Programming", price="$25.00", 
-             description="A practical guide to programming for total beginners.", catagory=catagory1)
+             description="A practical guide to programming for total beginners.", category=category1)
 
 session.add(storeItem2)
 session.commit()
@@ -47,7 +47,7 @@ storeItem3 = StoreItem(name="Don Quixote", author="Miguel de Cervantes", genre="
              obsessed with books of chivalry, and believes their every word to be true, despite the fact
              that many of the events in them are clearly impossible. Quixano eventually appears to other 
              people to have lost his mind from little sleep and food and because of so much reading.""",\
-             catagory=catagory1)
+             category=category1)
 
 session.add(storeItem3)
 session.commit()
@@ -57,7 +57,7 @@ storeItem4 = StoreItem(name="A Brief History of Time", author="Stephen Hawking",
              black holes to the layman from a scientific point of view. Published in 1988, this is one of the best
              science books of all time. It has since sold ten million copies and been revised to represent advances
              in technology made in the past two decades. Through it, readers will be able to understand and appreciate
-             the complexity of the universe.""", catagory=catagory1)
+             the complexity of the universe.""", category=category1)
 
 session.add(storeItem4)
 session.commit()
@@ -67,7 +67,7 @@ storeItem5 = StoreItem(name="Catch-22", author="Joseph Heller", genre="Classic F
              published in 1961. The novel, set during the later stages of World War II from 1943 onwards, is 
              frequently cited as one of the great literary works of the twentieth century. It has a distinctive 
              non-chronological style where events are described from different characters' points of view and out 
-             of sequence so that the time line develops along with the plot.""", catagory=catagory1)
+             of sequence so that the time line develops along with the plot.""", category=category1)
 
 session.add(storeItem5)
 session.commit()
@@ -76,38 +76,38 @@ session.commit()
 
 #Music
 
-catagory2 = Catagory(name="Music")
+category2 = Category(name="Music")
 
-session.add(catagory2)
+session.add(category2)
 session.commit()
 
 storeItem6 = StoreItem(name="Sgt. Peppers Lonely Hearts Club Band", author="The Beatles", genre="Rock",\
-             price="10.00",description="Year Released: 1967", catagory=catagory2)
+             price="10.00",description="Year Released: 1967", category=category2)
 
 session.add(storeItem6)
 session.commit()
 
 storeItem7 = StoreItem(name="1999", author="Prince", genre="R&B/Soul", price="$10.00",\
-             description="Year Released: 1982",catagory=catagory2)
+             description="Year Released: 1982",category=category2)
 
 session.add(storeItem7)
 session.commit()
 
 
 storeItem8 = StoreItem(name="21", author="Adele", genre="Pop", price="$10.00", description="Year Release: 2011",\
-             catagory=catagory2)
+             category=category2)
 
 session.add(storeItem8)
 session.commit()
 
 storeItem9 = StoreItem(name="Songs in the Key of Life", author="Stevie Wonder", genre="R&B/Soul", price="10.00",\
-             description="Year Released: 1976", catagory=catagory2)
+             description="Year Released: 1976", category=category2)
 
 session.add(storeItem9)
 session.commit()
 
 storeItem10 = StoreItem(name="The Planets", author="Gustave Holst", genre="classical", price="$10.00",\
-              description="Year Premiere: 1918")
+              description="Year Premiere: 1918", category=category2)
 
 session.add(storeItem10)
 session.commit()
@@ -115,9 +115,9 @@ session.commit()
 
 #Movies
 
-catagory3 = Catagory(name="Movies")
+category3 = Category(name="Movies")
 
-session.add(catagory3)
+session.add(category3)
 session.commit()
 
 storeItem11 = StoreItem(name="Citizen Kane (1941)", author="Orson Wells", genre="Drama", price="$10.00",\
@@ -126,7 +126,8 @@ storeItem11 = StoreItem(name="Citizen Kane (1941)", author="Orson Wells", genre=
               loosely modeled after the life of William Randolph Hearst, founder of the Hearst publishing empire,
               and the publisher's ultimately empty rise to power. Acclaimed for its innovative narrative structure, 
               deep focus cinematography, soundtrack, literate screenplay, and nuanced portrayal of the central 
-              character.""", catagory=catagory3)
+              character.""", category=category3)
+
 session.add(storeItem11)
 session.commit()
 
@@ -137,7 +138,7 @@ storeItem12 = StoreItem(name="All about Eve (1950", author="Joseph L. Mankiewicz
               of an aging actress who is undone by a young, ambitious fan. Sophisticated performances by Davis, 
               Sanders and Baxter shine in this scathing look at the world of the theater. Academy Award winner 
               for Best Picture, it is memorable for Sanders' role as the cynical critic and Marilyn Monroe as 
-              his scene-stealing consort.""", catagory=catagory3)
+              his scene-stealing consort.""", category=category3)
 
 session.add(storeItem12)
 session.commit()
@@ -149,7 +150,7 @@ storeItem13 = StoreItem(name="Dr. Strangelove, Or: How I Learned To Stop Worryin
               roles, who must contend with a Soviet nuclear attack on the United States and his own maniacal 
               staff, including Scott's memorable General Turgidson. Features a memorable triad of performances 
               by Sellers (as US president, British officer, and deranged scientist) and Pickens's wild ride on 
-              a missile. "Gentlemen, you can't fight in here! This is the War Room!""", catagory=catagory3)
+              a missile. "Gentlemen, you can't fight in here! This is the War Room!""", category=category3)
 
 session.add(storeItem13)
 session.commit()
@@ -160,7 +161,7 @@ storeItem14 = StoreItem(name="Fantasia (1940)", author="James Algar, Ben Sharpst
               classical music and animated images is a visual feast for young and old. Presented in a dazzling, 
               eight-part imaginative journey. Musical selections include Dukas' "The Sorcerer's Apprentice," 
               with Mickey Mouse as the apprentice in one of the film's most indelible images, and Stravinsky's 
-              "Rite of Spring.""", catagory=catagory3)
+              "Rite of Spring.""", category=category3)
 
 session.add(storeItem14)
 session.commit()
@@ -173,7 +174,7 @@ storeItem15 = StoreItem(name="Star Wars (1977)", author="George Lucas", genre="S
               Luke Skywalker (Hamill), who finds his calling as a Jedi warrior and with the help of "droids" and 
               an outlaw named Han Solo (Ford), then embarks on a mission to rescue a princess (Fisher) and save the
               galaxy from the Dark Side. "May the force be with you." Two sequels and prequels followed.""",\
-              catagory=catagory3)
+              category=category3)
 
 session.add(storeItem15)
 session.commit()
