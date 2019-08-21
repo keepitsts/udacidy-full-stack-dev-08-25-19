@@ -13,17 +13,11 @@
 		<nav class="navbar navbar-light bg-light">
   		 	<a class="navbar-brand" href="{{url_for('showCategories')}}">Oracle Books</a>
 			<ul class="nav justify-content-end">
-  				<<li class="nav-item">
-    			<a class="nav-link active" href="#"></a>
-  				</li>
-  				<li class="nav-item">
-    			<a class="nav-link" href="#"></a>
-  				</li>
   				<li class="nav-item">
     			<a class="nav-link" href="{{url_for('newStoreItem',category_id=category.id)}}">Create New Item</a>
   				</li>
   				<li class="nav-item">
-    			<a class="nav-link" href="#" tabindex="-1" aria-disabled="false">Login</a>
+    			<a class="btn btn-primary" href="{{url_for('gdisconnect')}}" role="button" tabindex="-1" aria-disabled="false">Logout</a>
   				</li>
 			</ul>
 		</nav>
@@ -33,8 +27,19 @@
 				<div class="col-2">
 				</div>
 				<div class="col-8">
+				<div class="flash">
+					{% with messages = get_flashed_messages() %}
+		{% if messages %}
+	  		<ul>
+	  		{% for message in messages %}
+	  			<li><strong> {{ message }} </strong></li>
+	  		{% endfor %}
+	  		</ul>
+			{% endif %}
+		{% endwith %}
+		</div>
 				{% if items !=[] %}
-				
+
 									{% for i in items %}
 											<div class="store-item">
 												<a href="{{url_for('viewItem', category_id=i.category_id, item_id=i.id)}}"><h3>{{i.name}}</h3></a>
@@ -42,7 +47,7 @@
 												<p>{{i.genre}}</p>
 												<p>{{i.price}}</p>
 
-												<p><a href="{{url_for('editStoreItem', category_id=category.id,  item_id=i.id)}}">Edit Item</a></p>
+												<p><a href="{{url_for('editStoreItem', category_id=category.id,  inventory_id=i.id)}}">Edit Item</a></p>
 												<p><a href="{{url_for('deleteStoreItem', category_id=category.id, inventory_id=i.id)}}">Delete </a></p>
 											</div>
 									{% endfor %}

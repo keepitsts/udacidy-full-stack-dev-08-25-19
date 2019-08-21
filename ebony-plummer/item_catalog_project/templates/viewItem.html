@@ -26,7 +26,7 @@
     			<a class="nav-link" href="#">Link</a>
   				</li>
   				<li class="nav-item">
-    			<a class="nav-link" href="#" tabindex="-1">Login</a>
+    			<a class="btn btn-primary" href="{{url_for('gdisconnect')}}" role="button" tabindex="-1" aria-disabled="false">Logout</a>
   				</li>
 			</ul>
 		</nav>
@@ -48,7 +48,7 @@
 					  <p>{{item.price}}</p>
 					  <p>{{item.description}}</p>
 
-					  <p><a href="{{url_for('editStoreItem', category_id=category.id, item_id=item.id)}}">Edit Item</a></p>
+					  <p><a href="{{url_for('editStoreItem', category_id=category.id, inventory_id=item.id)}}">Edit Item</a></p>
 
 					</div>
 				   </div>	

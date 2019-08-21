@@ -9,22 +9,21 @@
         <title>Oracle Books</title>
 	</head>
 	<body>
-		{
 		<!-- Nav Bar -->
 		<nav class="navbar navbar-light bg-light">
   		 	<a class="navbar-brand" href="{{url_for('publicCatalog')}}">Oracle Books</a>
 			<ul class="nav justify-content-end">
   				<li class="nav-item">
-    			<a class="nav-link active" href="#">Link</a>
+    			<a class="nav-link active" href="#"></a>
+  				</li>
+  				<li class="nav-item">
+    			<a class="nav-link" href="#"></a>
   				</li>
   				<li class="nav-item">
     			<a class="nav-link" href="#">Link</a>
   				</li>
   				<li class="nav-item">
-    			<a class="nav-link" href="#">Link</a>
-  				</li>
-  				<li class="nav-item">
-    			<a class="nav-link" href="#" tabindex="-1" aria-disabled="False">Login</a>
+    			<a class="btn btn-primary" href="{{url_for('showLogin')}}" type="button" tabindex="-1" aria-disabled="False">Login</a>
   				</li>
 			</ul>
 		</nav>
@@ -32,8 +31,7 @@
 		<!-- Main Content -->
 			<div class="container">
 				<div class="row">
-					<div class="col-2">
-					</div>	
+					<div class="col-2"></div>	
 					<div class="col-8">
 						<h1>Item Listing</h1>
 					{% if items !=[] %}
@@ -43,14 +41,13 @@
 												<p>{{i.author}}</p>
 												<p>{{i.genre}}</p>
 												<p>{{i.price}}</p>
-												<p>{{i.descrption</p>}}
+												<p>{{i.description}}</p>
 
 						
 											</div>
 									{% endfor %}
 				{% endif %}							
 					</div>		
-					</div>
 					<div class="col-2">
 				</div>
 			</div>

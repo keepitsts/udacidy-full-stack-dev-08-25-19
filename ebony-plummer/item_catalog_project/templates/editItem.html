@@ -23,7 +23,7 @@
     			<a class="nav-link" href="#">Link</a>
   				</li>
   				<li class="nav-item">
-    			<a class="nav-link" href="#" tabindex="-1">Login</a>
+    			<a class="btn btn-primary" href="{{url_for('gdisconnect')}}" role="button" tabindex="-1">Logout</a>
   				</li>
 			</ul>
 		</nav>
@@ -34,7 +34,7 @@
 				<div class="col-8">
 					<h1> Edit a Store Item</h1>
 				
-					<form action="{{url_for('editStoreItem', category_id=category_id, item_id=item.id)}}" method='post'>
+					<form action="{{url_for('editStoreItem', category_id=category_id, inventory_id=item.id)}}" method='post'>
 						<dl>
 							<dt>Name:
 								<dd><input type='text' size='30' name='name' placeholder='{{item.name}}'></dd>

@@ -11,19 +11,19 @@
 	<body>
 		<!-- Nav Bar -->
 		<nav class="navbar navbar-light bg-light">
-  		 	<a class="navbar-brand" href="#">Navbar</a>
+  		 	<a class="navbar-brand" href="#">Oracle Books</a>
 			<ul class="nav justify-content-end">
   				<li class="nav-item">
-    			<a class="nav-link active" href="#">Link</a>
+    			<a class="nav-link active" href="#"></a>
   				</li>
   				<li class="nav-item">
-    			<a class="nav-link" href="#">Link</a>
+    			<a class="nav-link" href="#"></a>
   				</li>
   				<li class="nav-item">
-    			<a class="nav-link" href="#">Link</a>
+    			<a class="nav-link" href="#"></a>
   				</li>
   				<li class="nav-item">
-    			<a class="nav-link" href="#" tabindex="-1" aria-disabled="False">Login</a>
+    			<a class="btn btn-primary" href="{{url_for('showLogin')}}" type="button" tabindex="-1" aria-disabled="False">Login</a>
   				</li>
 			</ul>
 		</nav>
@@ -35,11 +35,12 @@
 					</div>	
 					<div class="col-8">
 						<h1>Welcome to Oracle Books!</h1>	
-						<h2>Catagories</h2>
+						<h2>Categories</h2>
 
-						{% for catagory in catagories %}
-						<a href="{{url_for('showItemsPublic', catagory_id=catagory.id)}}"><h3>{{catagory.name}}</h3></a>		
-						{% endfor %}
+			{% for category in categories %}
+					<a href="{{url_for('showItemsPublic', category_id=category.id)}}">
+						<h3>{{category.name}}</h3></a>		
+			{% endfor %}
 	
 				</div>		
 					</div>
