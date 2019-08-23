@@ -56,7 +56,7 @@ def showStoreItemJSON():
     return jsonify(storeItem=[s.serialize for s in storeItem])
 
 
-@app.route('/api/v1.0/category/<int:category_id>inventory/JSON')
+@app.route('/api/v1.0/catalog/category/<int:category_id>/inventory/JSON')
 def showCategoryItemsJSON(category_id):
     category = session.query(Category).filter_by(id=category_id).one()
     items = session.query(StoreItem).filter_by(category_id=category_id).all()
@@ -68,7 +68,7 @@ def storeItemsJSON(category_id, inventory_id):
     store_item = session.query(StoreItem).filter_by(id=inventory_id).one()
     return jsonify(store_item=store_item.serialize)
 
-@app.route('/api/v1.0/oneItem')
+@app.route('/api/v1.0/category/oneItem')
 def viewOneItem(item_id):
     view_item = session.query(StoreItem).one()
     return jsonify(view_item=view_item.serialize)
