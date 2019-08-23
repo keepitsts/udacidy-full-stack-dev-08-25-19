@@ -1,4 +1,5 @@
-#Import SQLAlchemy Dependencies
+# Import SQLAlchemy Dependencies
+
 import os
 import sys
 from sqlalchemy import Column, ForeignKey, Integer, String
@@ -10,7 +11,7 @@ from sqlalchemy import create_engine
 Base = declarative_base()
 
 
-#Creates the User class for the user table.
+# Creates the User class for the user table.
 class User(Base):
     __tablename__ = 'user'
 
@@ -19,7 +20,9 @@ class User(Base):
     email = Column(String(250), nullable=False)
     picture = Column(String(250))
 
-#Creates the Category class for the category table.
+# Creates the Category class for the category table.
+
+
 class Category(Base):
     __tablename__ = 'category'
 
@@ -30,16 +33,16 @@ class Category(Base):
 
     @property
     def serialize(self):
-        #Return object data in a easily serializeable format.
+        # Return object data in a easily serializeable format.
         return {
             'name': self.name,
-            'id' : self.id,
+            'id': self.id,
         }
 
 
-#Creates the StoreItem class for the store_item table.
+# Creates the StoreItem class for the store_item table.
 
-#StoreItem Class
+# StoreItem Class
 class StoreItem(Base):
     __tablename__ = 'store_item'
 
@@ -56,24 +59,22 @@ class StoreItem(Base):
 
     @property
     def serialize(self):
-        #Return object data in a easily serializable format
+        # Return object data in a easily serializable format
         return {
-            'name' : self.name,
-            'id' : self.id,
-            'author' : self.author,
-            'genre' : self.genre,
-            'price' : self.price,
-            'description' : self.description,
+            'name': self.name,
+            'id': self.id,
+            'author': self.author,
+            'genre': self.genre,
+            'price': self.price,
+            'description': self.description,
         }
 
 
-#Creates a database
-#engine = create_engine('sqlite:///storeitemsinventory.db')
+# Creates a database
+# engine = create_engine('sqlite:///storeitemsinventory.db')
 
-#Creates a database with users.
+# Creates a database with users.
 engine = create_engine('sqlite:///storeitemsinventorywithusers.db')
 
 
 Base.metadata.create_all(engine)
-
-
