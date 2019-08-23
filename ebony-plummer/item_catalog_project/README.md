@@ -80,21 +80,20 @@ The Oracle Books application is a RESTful web application that uses the Python F
 
 1. database_setup.py
 
-The `database_setup.py` file sets up the database for this application. The database for this application contains the following tables: Category, StoreItem, and User. The SQLAlchemy Object Relational Mapper, (ORM) is used to create the classes that serve as the bases for the tables in the database for this project.
+   The `database_setup.py` file sets up the database for this application. The database for this application contains ...the following tables: Category, StoreItem, and User. The SQLAlchemy Object Relational Mapper, (ORM) is used to create the classes that serve as the bases for the tables in the database for this project.
 
 2. store_items.py
 
-The `store_items.py` file inserts the initial categories and items that can be seen in this application. Like the 
-`database_setup.py' file the `store_items.py' file also uses the SQLAlchemy ORM for its functionality. 
-The `store_items.py` uses the CRUD, (create, read, update, and delete) functionality to add categories and items to the database for this application.
+   The `store_items.py` file inserts the initial categories and items that can be seen in this application. Like the `database_setup.py` file the `store_items.py` file also uses the SQLAlchemy ORM for its functionality. 
+   The `store_items.py` uses the CRUD, (create, read, update, and delete) functionality to add categories and items to the database for this application.
 
 3. project.py
 
-The `project.py` contains the server and additional application logic that runs the Oracle Books application. SQLAlchemy uses CRUD functions which allows users to read and modify the data in the application. The server that runs the application is created by the Flask framework.
+   The `project.py` contains the server and additional application logic that runs the Oracle Books application. SQLAlchemy uses CRUD functions which allows users to read and modify the data in the application. The server that runs the application is created by the Flask framework.
 
 4. OAuth Authentication
 
-This application uses Google OAuth to authenticate users and allow users to login to Oracle Books with their Google account.
+   This application uses Google OAuth to authenticate users and allow users to login to Oracle Books with their Google account.
 
 
 ### Frontend
