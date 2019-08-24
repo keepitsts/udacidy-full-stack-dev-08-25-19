@@ -56,7 +56,7 @@ def showStoreItemJSON():
     return jsonify(storeItem=[s.serialize for s in storeItem])
 
 
-@app.route("/api/v1.0/catalog/category/<int:category_id>/inventory/JSON")
+@app.route("/api/v1.0/catalog/<int:category_id>/inventory/JSON")
 def showCategoryItemsJSON(category_id):
     category = session.query(Category).filter_by(id=category_id).one()
     items = session.query(StoreItem).filter_by(category_id=category_id).all()
@@ -64,14 +64,13 @@ def showCategoryItemsJSON(category_id):
     return jsonify(StoreItems=[i.serialize for i in items])
 
 
-@app.route("""/api/v1.0/category/<int:category_id>/inventory/
-          <int:inventory_id>/JSON""")
+@app.route("/api/v1.0/catalog/<int:category_id>/<int:inventory_id>/JSON")
 def storeItemsJSON(category_id, inventory_id):
-    store_item = session.query(StoreItem).filter_by(id=inventory_id).one()
+    store_item = session.query(StoreItem).filter_by(id=inventory_id).first()
     return jsonify(store_item=store_item.serialize)
 
 
-@app.route('/api/v1.0/category/oneItem')
+@app.route('/api/v1.0/category/<int:item_id>/oneItem')
 def viewOneItem(item_id):
     view_item = session.query(StoreItem).one()
     return jsonify(view_item=view_item.serialize)
@@ -219,7 +218,7 @@ def getUserID(email):
     try:
         user = session.query(User).filter_by(email=email).first()
         return user.id
-    except:
+    except Exception:
         return None
 
 
@@ -309,9 +308,7 @@ def editCategory(category_id):
     if 'username' not in login_session:
         return redirect('/login')
     if editedCategory.user_id != login_session['user_id']:
-        return """<script>function myfunction() {alert'You are not authorized
-        to edit this category. Please create your own category in order to
-        edit.';}</script><body onload='myFunction()''>"""
+        return "<script>function myFunction() {alert('You are not authorized to edit this category. Please create your own category in order to edit.');}</script><body onload='myFunction()''>"  # noqa
     if request.method == 'POST':
         if request.form['name']:
             editedCategory.name = request.form['name']
@@ -327,13 +324,12 @@ def editCategory(category_id):
 @app.route('/catalog/category/<int:category_id>/delete/',
            methods=['GET', 'POST'])
 def deleteCategory(category_id):
-    categoryToDelete = session.query(Category).filter_by(id=category_id).one()
+    categoryToDelete = session.query(
+        Category).filter_by(id=category_id).one_or_none()
     if 'username' not in login_session:
         return redirect('/login')
     if categoryToDelete.user_id != login_session['user_id']:
-        return """<script>function myfunction() {alert'You are not authorized
-        to delete this category. Please create your own category in order to
-        delete.';}</script><body onload='myFunction()''>"""
+        return "<script>function myFunction() {alert('You are not authorized to delete this category. Please create your own category in order to delete.');}</script><body onload='myFunction()''>"  # noqa
     if request.method == 'POST':
         session.delete(categoryToDelete)
         session.commit()
@@ -406,9 +402,7 @@ def newStoreItem(category_id):
         return redirect('/login')
     category = session.query(Category).filter_by(id=category_id).one()
     if login_session['user_id'] != category.user_id:
-        return """<script>function myfunction() {alert'You are not authorized
-        to add items this category. Please create your own category in order
-        to add items.';}</script><body onload='myFunction()''>"""
+        return "<script>function myFunction() {alert('You are not authorized to add items this category. Please create your own category in order to add items.');}</script><body onload='myFunction()''>"  # noqa
     if request.method == 'POST':
         newItem = StoreItem(
             name=request.form['name'],
@@ -430,17 +424,15 @@ def newStoreItem(category_id):
 
 
 # Edit a store item.
-@app.route('''/catalog/category/<int:category_id>/inventory/
-          <int:inventory_id>/edit/''', methods=['GET', 'POST'])
+@app.route('/catalog/edit/<int:category_id>/<int:inventory_id>/edit/',
+           methods=['GET', 'POST'])
 def editStoreItem(category_id, inventory_id):
     if 'username' not in login_session:
         return redirect('/login')
     editedItem = session.query(StoreItem).filter_by(id=inventory_id).one()
     category = session.query(Category).filter_by(id=category_id).one()
     if login_session['user_id'] != category.user_id:
-        return """<script>function myfunction() {alert'You are not authorized
-        to edit items this category. Please create your own category in order
-        to edit items.';}</script><body onload='myFunction()''>"""
+        return "<script>function myFunction() {alert ('You are not authorized to edit items this category. Please create your own category in order to edit items.');}</script><body onload='myFunction()''>"  # noqa
     if request.method == 'POST':
         if request.form['name']:
             editedItem.name = request.form['name']
@@ -449,7 +441,7 @@ def editStoreItem(category_id, inventory_id):
         if request.form['genre']:
             editedItem.genre = request.form['genre']
         if request.form['price']:
-            editedStoreItem.price = request.form['price']
+            editedItem.price = request.form['price']
         if request.form['description']:
             editedItem.description = request.form['description']
 
@@ -465,17 +457,15 @@ def editStoreItem(category_id, inventory_id):
 
 
 # Delete a store item.
-@app.route('''/catalog/category/<int:category_id>/inventory/
-          <int:inventory_id>/delete/''', methods=['GET', 'POST'])
+@app.route('/catalog/delete/<int:category_id>/<int:inventory_id>/delete/',
+           methods=['GET', 'POST'])
 def deleteStoreItem(category_id, inventory_id):
     if 'username' not in login_session:
         return redirect('/login')
     category = session.query(Category).filter_by(id=category_id).one()
     itemToDelete = session.query(StoreItem).filter_by(id=inventory_id).one()
     if login_session['user_id'] != category.user_id:
-        return """<script>function myfunction() {alert'You are not authorized
-        to delete items this category. Please create your own category in
-        order to delte items.';}</script><body onload='myFunction()''>"""
+        return "<script>function myFunction() {alert('You are not authorized to delete items this category. Please create your own category in order to delete items.');}</script><body onload='myFunction()''>"  # noqa
     if request.method == 'POST':
         session.delete(itemToDelete)
         session.commit()
