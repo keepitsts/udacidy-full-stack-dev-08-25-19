@@ -8,7 +8,7 @@ from sqlalchemy.orm import sessionmaker
 from database_setup import Category, Base, StoreItem, User
 
 # Connect to the database that was created in the database_set.py file.
-#engine = create_engine('sqlite:///storeitemsinventory.db')
+# engine = create_engine('sqlite:///storeitemsinventory.db')
 
 engine = create_engine('sqlite:///storeitemsinventorywithusers.db')
 
@@ -55,9 +55,8 @@ storeItem2 = StoreItem(user_id=1,
                        author='Al Sweigart',
                        genre="Compute Programming",
                        price="$25.00",
-                       description = """A practical guide to programming for
-                       total beginners.""",
-
+                       description="""A practical guide to programming total
+                       beginners.""",
                        category=category1)
 
 session.add(storeItem2)
@@ -109,12 +108,12 @@ storeItem5 = StoreItem(user_id=1,
                        description="""Catch-22 is a satirical, historical
                        novel by the American author Joseph Heller, first
                        published in 1961. The novel, set during the later
-                       stages of World War II from 1943 onwards, is 
-                       frequently cited as one of the great literary works of
-                       the twentieth century. It has a distinctive 
-                       non-chronological style where events are described from
-                       different characters' points of view and out  of
-                       sequence so that the time line develops along with the
+                       stages of World War II from 1943 onwards, is frequently
+                       cited as one of the great literary works of the
+                       twentieth century. It has a distinctive
+                       non-chronological style  where events are described
+                       from different characters'  points of view and out of
+                       sequence so that the time-line develops along with the
                        plot.""",
                        category=category1)
 
@@ -247,7 +246,7 @@ storeItem13 = StoreItem(user_id=1,
                         one of his three  roles, who must contend with a
                         Soviet nuclear attack on the United States and his own
                         maniacal  staff, including Scott's memorable General
-                        Turgidson. Features a memorable triad of performances 
+                        Turgidson. Features a memorable triad of performances
                         by Sellers (as US president, British officer, and
                         deranged scientist) and Pickens's wild ride on  a
                         missile. "Gentlemen, you can't fight in here! This is
@@ -267,7 +266,7 @@ storeItem14 = StoreItem(user_id=1,
                         Stokowski (himself) and the Philadelphia Orchestra
                         Synopsis: Disney's groundbreaking union and mixture of
                         classical music and animated images is a visual feast
-                        for young and old. Presented in a dazzling, 
+                        for young and old. Presented in a dazzling,
                         eight-part imaginative journey. Musical selections
                         include Dukas' "The Sorcerer's Apprentice,"  with
                         Mickey Mouse as the apprentice in one of the film's
